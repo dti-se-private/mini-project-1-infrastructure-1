@@ -9,7 +9,7 @@ CREATE TABLE account (
     email TEXT UNIQUE,
     password TEXT,
     phone TEXT,
-    dob TIMESTAMPTZ,
+    bod TIMESTAMPTZ,
     referral_code TEXT UNIQUE
 );
 
@@ -142,8 +142,8 @@ INSERT INTO account (id, name, email, password, phone, bod, referral_code) VALUE
 (uuid_generate_v4(), 'Cindy', 'cindy@mail.com', 'password', '08123456807', '1991-05-01', 'H3P7L9W6M'),
 (uuid_generate_v4(), 'David', 'david@mail.com', 'password', '08123456808', '1991-06-01', 'N8T5K2L4P');
 
-INSERT INTO session (id, account_id, access_token, refresh_token, access_token_expired_at, refresh_token_expired_at) VALUES
-select uuid_generate_v4(), id, uuid_generate_v4(), uuid_generate_v4(), now() + interval '1 hour', now() + interval '1 day' from account;
+INSERT INTO session (id, account_id, access_token, refresh_token, access_token_expired_at, refresh_token_expired_at)
+SELECT uuid_generate_v4(), id, uuid_generate_v4(), uuid_generate_v4(), now() + interval '1 hour', now() + interval '1 day' FROM account;
 
 INSERT INTO voucher (id, code, name, description, variable_amount, started_at, ended_at) VALUES
 (uuid_generate_v4(), 'SPRINGSALE2024', 'Spring Sale', 'Get 20% off all items', 0.20, '2024-03-01', '2024-04-30'),
@@ -177,8 +177,8 @@ INSERT INTO voucher (id, code, name, description, variable_amount, started_at, e
 (uuid_generate_v4(), 'FESTIVE2026', 'Festive Cheer', '15% off on holiday treats', 0.15, '2026-12-01', '2026-12-31'),
 (uuid_generate_v4(), 'NEWYEAR2026', 'New Year Celebration', '20% off on celebration supplies', 0.20, '2026-12-26', '2027-01-05');
 
-INSERT INTO point (id, account_id, fixed_amount, ended_at) VALUES
-select uuid_generate_v4(), id, random() * 10000, now() + interval '3 months' from account;
+INSERT INTO point (id, account_id, fixed_amount, ended_at)
+SELECT uuid_generate_v4(), id, random() * 10000, now() + interval '3 months' FROM account;
 
 INSERT INTO event (id, account_id, name, description, location, category, time) VALUES
 (uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Music Festival', 'An outdoor music festival with various artists.', 'https://goo.gl/maps/abc123', 'Entertainment', '2024-12-01 18:00:00'),
@@ -276,12 +276,11 @@ INSERT INTO feedback (id, transaction_id, account_id, rating, review) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 28), (SELECT id FROM account LIMIT 1 OFFSET 8), 1, 'Very bad experience.'),
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 29), (SELECT id FROM account LIMIT 1 OFFSET 9), 4, 'Quite good, met expectations.');
 
+INSERT INTO account_voucher (id, account_id, voucher_id, quantity)
+SELECT uuid_generate_v4(), account.id, voucher.id, floor(random() * 10) + 1 FROM account, voucher;
 
-INSERT INTO account_voucher (id, account_id, voucher_id, quantity) VALUES
-select uuid_generate_v4(), account.id, voucher.id, random() * 10 from account, voucher;
-
-INSERT INTO event_voucher (id, voucher_id, event_id) VALUES
-select uuid_generate_v4(), voucher.id, event.id from voucher, event;
+INSERT INTO event_voucher (id, voucher_id, event_id)
+SELECT uuid_generate_v4(), voucher.id, event.id FROM voucher, event;
 
 INSERT INTO transaction_ticket (id, transaction_id, key, value) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 0), 'name', (SELECT name FROM account LIMIT 1 OFFSET 0)),
@@ -317,8 +316,8 @@ INSERT INTO transaction_ticket (id, transaction_id, key, value) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 30), 'email', (SELECT email FROM account LIMIT 1 OFFSET 7)),
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 31), 'dob', (SELECT bod FROM account LIMIT 1 OFFSET 7));
 
-INSERT INTO transaction_voucher (id, transaction_id, voucher_id, quantity) VALUES
-select uuid_generate_v4(), transaction.id, voucher.id, random() * 10 from transaction, voucher;
+INSERT INTO transaction_voucher (id, transaction_id, voucher_id, quantity)
+SELECT uuid_generate_v4(), transaction.id, voucher.id, floor(random() * 10) + 1 FROM transaction, voucher;
 
-INSERT INTO transaction_point (id, transaction_id, point_id, amount) VALUES
-select uuid_generate_v4(), transaction.id, point.id, 10000 - point.fixed_amount from transaction, point;
+INSERT INTO transaction_point (id, transaction_id, point_id, fixed_amount)
+SELECT uuid_generate_v4(), transaction.id, point.id, 10000 - point.fixed_amount FROM transaction, point;

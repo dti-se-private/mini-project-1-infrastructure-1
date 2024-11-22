@@ -85,14 +85,6 @@ CREATE TABLE event_voucher (
     event_id UUID REFERENCES event(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-DROP TABLE IF EXISTS transaction_ticket CASCADE;
-CREATE TABLE transaction_ticket (
-    id UUID PRIMARY KEY,
-    transaction_id UUID REFERENCES transaction(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    key TEXT,
-    value TEXT
-);
-
 DROP TABLE IF EXISTS transaction_voucher CASCADE;
 CREATE TABLE transaction_voucher (
     id UUID PRIMARY KEY,
@@ -107,6 +99,29 @@ CREATE TABLE transaction_point (
     point_id UUID REFERENCES point(id) ON DELETE CASCADE ON UPDATE CASCADE,
     transaction_id UUID REFERENCES transaction(id) ON DELETE CASCADE ON UPDATE CASCADE,
     fixed_amount NUMERIC
+);
+
+CREATE TABLE event_ticket (
+    id UUID PRIMARY KEY,
+    event_id UUID REFERENCES event(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    name TEXT,
+    description TEXT,
+    price NUMERIC,
+    slots NUMERIC
+);
+
+CREATE TABLE event_ticket_field (
+    id UUID PRIMARY KEY,
+    event_ticket_id UUID REFERENCES event_ticket(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    key TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS transaction_ticket_field CASCADE;
+CREATE TABLE transaction_ticket_field (
+    id UUID PRIMARY KEY,
+    transaction_id UUID REFERENCES transaction(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    event_ticket_field_id UUID REFERENCES event_ticket_field(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    value TEXT
 );
 
 -- dml
@@ -178,7 +193,7 @@ INSERT INTO voucher (id, code, name, description, variable_amount, started_at, e
 (uuid_generate_v4(), 'NEWYEAR2026', 'New Year Celebration', '20% off on celebration supplies', 0.20, '2026-12-26', '2027-01-05');
 
 INSERT INTO point (id, account_id, fixed_amount, ended_at)
-SELECT uuid_generate_v4(), id, floor(random() * 10001), now() + interval '3 months' FROM account;
+SELECT uuid_generate_v4(), id, random() * 10000, now() + interval '3 months' FROM account;
 
 INSERT INTO event (id, account_id, name, description, location, category, time) VALUES
 (uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Music Festival', 'An outdoor music festival with various artists.', 'https://goo.gl/maps/abc123', 'Entertainment', '2024-12-01 18:00:00'),
@@ -277,47 +292,48 @@ INSERT INTO feedback (id, transaction_id, account_id, rating, review) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 29), (SELECT id FROM account LIMIT 1 OFFSET 9), 4, 'Quite good, met expectations.');
 
 INSERT INTO account_voucher (id, account_id, voucher_id, quantity)
-SELECT uuid_generate_v4(), account.id, voucher.id, floor(random() * 11) FROM account, voucher;
+SELECT uuid_generate_v4(), account.id, voucher.id, floor(random() * 10) + 1 FROM account, voucher;
 
 INSERT INTO event_voucher (id, voucher_id, event_id)
 SELECT uuid_generate_v4(), voucher.id, event.id FROM voucher, event;
 
-INSERT INTO transaction_ticket (id, transaction_id, key, value) VALUES
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 0), 'name', (SELECT name FROM account LIMIT 1 OFFSET 0)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 1), 'phone', (SELECT phone FROM account LIMIT 1 OFFSET 0)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 2), 'email', (SELECT email FROM account LIMIT 1 OFFSET 0)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 3), 'dob', (SELECT dob FROM account LIMIT 1 OFFSET 0)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 4), 'name', (SELECT name FROM account LIMIT 1 OFFSET 1)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 5), 'phone', (SELECT phone FROM account LIMIT 1 OFFSET 1)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 6), 'email', (SELECT email FROM account LIMIT 1 OFFSET 1)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 7), 'dob', (SELECT dob FROM account LIMIT 1 OFFSET 1)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 8), 'name', (SELECT name FROM account LIMIT 1 OFFSET 2)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 9), 'phone', (SELECT phone FROM account LIMIT 1 OFFSET 2)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 10), 'email', (SELECT email FROM account LIMIT 1 OFFSET 2)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 11), 'dob', (SELECT dob FROM account LIMIT 1 OFFSET 2)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 12), 'name', (SELECT name FROM account LIMIT 1 OFFSET 3)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 13), 'phone', (SELECT phone FROM account LIMIT 1 OFFSET 3)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 14), 'email', (SELECT email FROM account LIMIT 1 OFFSET 3)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 15), 'dob', (SELECT dob FROM account LIMIT 1 OFFSET 3)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 16), 'name', (SELECT name FROM account LIMIT 1 OFFSET 4)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 17), 'phone', (SELECT phone FROM account LIMIT 1 OFFSET 4)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 18), 'email', (SELECT email FROM account LIMIT 1 OFFSET 4)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 19), 'dob', (SELECT dob FROM account LIMIT 1 OFFSET 4)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 20), 'name', (SELECT name FROM account LIMIT 1 OFFSET 5)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 21), 'phone', (SELECT phone FROM account LIMIT 1 OFFSET 5)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 22), 'email', (SELECT email FROM account LIMIT 1 OFFSET 5)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 23), 'dob', (SELECT dob FROM account LIMIT 1 OFFSET 5)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 24), 'name', (SELECT name FROM account LIMIT 1 OFFSET 6)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 25), 'phone', (SELECT phone FROM account LIMIT 1 OFFSET 6)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 26), 'email', (SELECT email FROM account LIMIT 1 OFFSET 6)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 27), 'dob', (SELECT dob FROM account LIMIT 1 OFFSET 6)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 28), 'name', (SELECT name FROM account LIMIT 1 OFFSET 7)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 29), 'phone', (SELECT phone FROM account LIMIT 1 OFFSET 7)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 30), 'email', (SELECT email FROM account LIMIT 1 OFFSET 7)),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 31), 'dob', (SELECT dob FROM account LIMIT 1 OFFSET 7));
-
 INSERT INTO transaction_voucher (id, transaction_id, voucher_id, quantity)
-SELECT uuid_generate_v4(), transaction.id, voucher.id, floor(random() * 11) FROM transaction, voucher;
+SELECT uuid_generate_v4(), transaction.id, voucher.id, floor(random() * 10) + 1 FROM transaction, voucher;
 
 INSERT INTO transaction_point (id, transaction_id, point_id, fixed_amount)
 SELECT uuid_generate_v4(), transaction.id, point.id, 10000 - point.fixed_amount FROM transaction, point;
+
+INSERT INTO event_ticket (id, event_id, name, price, slots)
+SELECT uuid_generate_v4(), event.id, 'reguler', floor(random() * 300001), floor(random() * (20) + 1) * 50 FROM event;
+
+INSERT INTO event_ticket_field (id, event_ticket_id, key)
+SELECT 
+    uuid_generate_v4(), 
+    event_ticket.id, 
+    keys.key
+FROM 
+    event_ticket
+CROSS JOIN 
+    (VALUES ('name'), ('phone'), ('email'), ('dob')) AS keys(key); 
+
+INSERT INTO transaction_ticket_field (id, transaction_id, event_ticket_field_id, value)
+SELECT 
+    uuid_generate_v4(), 
+    transaction.id, 
+    event_ticket_field.id, 
+    CASE event_ticket_field.key
+        WHEN 'name' THEN account.name
+        WHEN 'phone' THEN account.phone
+        WHEN 'email' THEN account.email
+        WHEN 'dob' THEN account.dob::text
+    END AS value
+FROM 
+    transaction
+JOIN 
+    account ON transaction.account_id = account.id
+JOIN 
+    event_ticket_field ON event_ticket_field.event_ticket_id IN (
+        SELECT id FROM event_ticket
+    )
+WHERE 
+    event_ticket_field.key IN ('name', 'phone', 'email', 'dob');

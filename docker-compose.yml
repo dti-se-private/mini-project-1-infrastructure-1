@@ -2,7 +2,7 @@ services:
   frontend-1:
     image: dti-se-private/mini-project-1-frontend-1:latest
     build:
-      context: ${FRONTEND_PATH}
+      context: ${FRONTEND_1_PATH}
       dockerfile: Dockerfile
     ports:
       - "${FRONTEND_1_PORT}:80"
@@ -17,8 +17,6 @@ services:
       - "${BACKEND_1_PORT}:80"
     environment:
       - DATABASE_URL=postgresql://user:password@database:5432/backend1_db
-    depends_on:
-      - database
   datastore-1:
     image: postgres:latest
     ports:

@@ -101,6 +101,7 @@ CREATE TABLE transaction_point (
     fixed_amount NUMERIC
 );
 
+DROP TABLE IF EXISTS event_ticket CASCADE;
 CREATE TABLE event_ticket (
     id UUID PRIMARY KEY,
     event_id UUID REFERENCES event(id) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -110,10 +111,11 @@ CREATE TABLE event_ticket (
     slots NUMERIC
 );
 
+DROP TABLE IF EXISTS event_ticket_field CASCADE;
 CREATE TABLE event_ticket_field (
     id UUID PRIMARY KEY,
     event_ticket_id UUID REFERENCES event_ticket(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    key TEXT NOT NULL
+    key TEXT
 );
 
 DROP TABLE IF EXISTS transaction_ticket_field CASCADE;
@@ -158,7 +160,8 @@ INSERT INTO account (id, name, email, password, phone, dob, referral_code) VALUE
 (uuid_generate_v4(), 'David', 'david@mail.com', 'password', '08123456808', '1991-06-01', 'N8T5K2L4P');
 
 INSERT INTO session (id, account_id, access_token, refresh_token, access_token_expired_at, refresh_token_expired_at)
-SELECT uuid_generate_v4(), id, uuid_generate_v4(), uuid_generate_v4(), now() + interval '1 hour', now() + interval '1 day' FROM account;
+SELECT uuid_generate_v4(), id, uuid_generate_v4(), uuid_generate_v4(), now() + interval '1 hour', now() + interval '1 day' 
+FROM account;
 
 INSERT INTO voucher (id, code, name, description, variable_amount, started_at, ended_at) VALUES
 (uuid_generate_v4(), 'SPRINGSALE2024', 'Spring Sale', 'Get 20% off all items', 0.20, '2024-03-01', '2024-04-30'),
@@ -193,7 +196,8 @@ INSERT INTO voucher (id, code, name, description, variable_amount, started_at, e
 (uuid_generate_v4(), 'NEWYEAR2026', 'New Year Celebration', '20% off on celebration supplies', 0.20, '2026-12-26', '2027-01-05');
 
 INSERT INTO point (id, account_id, fixed_amount, ended_at)
-SELECT uuid_generate_v4(), id, random() * 10000, now() + interval '3 months' FROM account;
+SELECT uuid_generate_v4(), id, floor(random() * 10001), now() + interval '3 months' 
+FROM account;
 
 INSERT INTO event (id, account_id, name, description, location, category, time) VALUES
 (uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Music Festival', 'An outdoor music festival with various artists.', 'https://goo.gl/maps/abc123', 'Entertainment', '2024-12-01 18:00:00'),
@@ -228,36 +232,36 @@ INSERT INTO event (id, account_id, name, description, location, category, time) 
 (uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 29), 'Innovation Summit', 'Summit on innovation and entrepreneurship.', 'https://goo.gl/maps/jkl890', 'Conference', '2027-04-25 09:00:00');
 
 INSERT INTO transaction (id, event_id, account_id, timestamp) VALUES
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 0), now() + interval '1 day'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 1), now() + interval '2 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 2), now() + interval '3 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 3), now() + interval '4 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 4), now() + interval '5 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 5), now() + interval '6 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 6), now() + interval '7 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 7), now() + interval '8 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 8), now() + interval '9 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 9), now() + interval '10 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 10), now() + interval '11 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 11), now() + interval '12 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 12), now() + interval '13 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 13), now() + interval '14 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 14), now() + interval '15 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 15), now() + interval '16 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 16), now() + interval '17 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 17), now() + interval '18 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 18), now() + interval '19 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 19), now() + interval '20 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 20), now() + interval '21 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 21), now() + interval '22 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 22), now() + interval '23 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 23), now() + interval '24 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 24), now() + interval '25 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 25), now() + interval '26 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 26), now() + interval '27 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 27), now() + interval '28 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 28), now() + interval '29 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 29), now() + interval '30 days');
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 0), now() - interval '1 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 1), now() - interval '2 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 2), now() - interval '3 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 3), now() - interval '4 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 4), now() - interval '5 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 5), now() - interval '6 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 6), now() - interval '7 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 7), now() - interval '8 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 8), now() - interval '9 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 9), now() - interval '10 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 10), now() - interval '11 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 11), now() - interval '12 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 12), now() - interval '13 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 13), now() - interval '14 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 14), now() - interval '15 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 15), now() - interval '16 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 16), now() - interval '17 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 17), now() - interval '18 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 18), now() - interval '19 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 19), now() - interval '20 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 20), now() - interval '21 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 21), now() - interval '22 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 22), now() - interval '23 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 23), now() - interval '24 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 24), now() - interval '25 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 25), now() - interval '26 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 26), now() - interval '27 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 27), now() - interval '28 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 28), now() - interval '29 days'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 29), now() - interval '30 days');
 
 INSERT INTO feedback (id, transaction_id, account_id, rating, review) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 0), 5, 'Excellent service! Highly recommend.'),
@@ -292,29 +296,28 @@ INSERT INTO feedback (id, transaction_id, account_id, rating, review) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 29), (SELECT id FROM account LIMIT 1 OFFSET 9), 4, 'Quite good, met expectations.');
 
 INSERT INTO account_voucher (id, account_id, voucher_id, quantity)
-SELECT uuid_generate_v4(), account.id, voucher.id, floor(random() * 10) + 1 FROM account, voucher;
+SELECT uuid_generate_v4(), account.id, voucher.id, floor(random() * 11) 
+FROM account, voucher;
 
 INSERT INTO event_voucher (id, voucher_id, event_id)
-SELECT uuid_generate_v4(), voucher.id, event.id FROM voucher, event;
+SELECT uuid_generate_v4(), voucher.id, event.id 
+FROM voucher, event;
 
 INSERT INTO transaction_voucher (id, transaction_id, voucher_id, quantity)
-SELECT uuid_generate_v4(), transaction.id, voucher.id, floor(random() * 10) + 1 FROM transaction, voucher;
+SELECT uuid_generate_v4(), transaction.id, voucher.id, floor(random() * 11) 
+FROM transaction, voucher;
 
 INSERT INTO transaction_point (id, transaction_id, point_id, fixed_amount)
-SELECT uuid_generate_v4(), transaction.id, point.id, 10000 - point.fixed_amount FROM transaction, point;
+SELECT uuid_generate_v4(), transaction.id, point.id, 10000 - point.fixed_amount 
+FROM transaction, point;
 
 INSERT INTO event_ticket (id, event_id, name, price, slots)
-SELECT uuid_generate_v4(), event.id, 'reguler', floor(random() * 300001), floor(random() * (20) + 1) * 50 FROM event;
+SELECT uuid_generate_v4(), event.id, 'reguler', floor(random() * 300001), floor(random() * (20) + 1) * 50 
+FROM event;
 
 INSERT INTO event_ticket_field (id, event_ticket_id, key)
-SELECT 
-    uuid_generate_v4(), 
-    event_ticket.id, 
-    keys.key
-FROM 
-    event_ticket
-CROSS JOIN 
-    (VALUES ('name'), ('phone'), ('email'), ('dob')) AS keys(key); 
+SELECT uuid_generate_v4(), event_ticket.id, key
+FROM event_ticket, (VALUES ('name'), ('phone'), ('email'), ('dob')) AS keys(key);
 
 INSERT INTO transaction_ticket_field (id, transaction_id, event_ticket_field_id, value)
 SELECT 
@@ -326,14 +329,29 @@ SELECT
         WHEN 'phone' THEN account.phone
         WHEN 'email' THEN account.email
         WHEN 'dob' THEN account.dob::text
-    END AS value
-FROM 
-    transaction
-JOIN 
-    account ON transaction.account_id = account.id
-JOIN 
-    event_ticket_field ON event_ticket_field.event_ticket_id IN (
-        SELECT id FROM event_ticket
-    )
-WHERE 
-    event_ticket_field.key IN ('name', 'phone', 'email', 'dob');
+    END
+FROM transaction
+INNER JOIN account ON transaction.account_id = account.id
+INNER JOIN event_ticket ON transaction.event_id = event_ticket.event_id
+INNER JOIN event_ticket_field ON event_ticket.id = event_ticket_field.event_ticket_id
+WHERE event_ticket_field.key IN ('name', 'phone', 'email', 'dob');
+
+-- dql
+SELECT * 
+FROM account
+INNER JOIN session ON session.account_id = account.id
+INNER JOIN account_voucher ON account_voucher.account_id = account.id 
+INNER JOIN voucher ON voucher.id = account_voucher.voucher_id
+INNER JOIN event_voucher ON event_voucher.voucher_id = voucher.id
+INNER JOIN point ON point.account_id = account.id
+INNER JOIN transaction ON transaction.account_id = account.id
+INNER JOIN feedback ON feedback.account_id = account.id
+INNER JOIN transaction_voucher ON transaction_voucher.transaction_id = transaction.id
+INNER JOIN transaction_point ON transaction_point.transaction_id = transaction.id 
+INNER JOIN event ON event.id = transaction.event_id
+INNER JOIN event_ticket ON event_ticket.event_id = event.id
+INNER JOIN event_ticket_field ON event_ticket_field.event_ticket_id = event_ticket.id
+INNER JOIN transaction_ticket_field ON transaction_ticket_field.transaction_id = transaction.id
+WHERE account.id in (SELECT id FROM account LIMIT 1 OFFSET 0)
+LIMIT 1 OFFSET 0;
+

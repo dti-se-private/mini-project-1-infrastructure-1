@@ -20,7 +20,7 @@ CREATE TABLE session (
     access_token TEXT UNIQUE,
     refresh_token TEXT UNIQUE,
     access_token_expired_at TIMESTAMPTZ,
-    refresh_token_expired_at TEXT
+    refresh_token_expired_at TIMESTAMPTZ
 );
 
 DROP TABLE IF EXISTS voucher CASCADE;
@@ -354,4 +354,6 @@ INNER JOIN event_ticket_field ON event_ticket_field.event_ticket_id = event_tick
 INNER JOIN transaction_ticket_field ON transaction_ticket_field.transaction_id = transaction.id
 WHERE account.id in (SELECT id FROM account LIMIT 1 OFFSET 0)
 LIMIT 1 OFFSET 0;
+
+
 

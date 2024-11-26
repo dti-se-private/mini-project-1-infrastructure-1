@@ -10,7 +10,8 @@ CREATE TABLE account (
     password TEXT,
     phone TEXT,
     dob TIMESTAMPTZ,
-    referral_code TEXT UNIQUE
+    referral_code TEXT UNIQUE,
+    profile_image_url TEXT
 );
 
 DROP TABLE IF EXISTS session CASCADE;
@@ -50,7 +51,8 @@ CREATE TABLE event (
     description TEXT,
     location TEXT,
     category TEXT,
-    time TIMESTAMPTZ
+    time TIMESTAMPTZ,
+    banner_image_url TEXT
 );
 
 DROP TABLE IF EXISTS transaction CASCADE;
@@ -127,37 +129,37 @@ CREATE TABLE transaction_ticket_field (
 );
 
 -- dml
-INSERT INTO account (id, name, email, password, phone, dob, referral_code) VALUES
-(uuid_generate_v4(), 'Andy', 'andy@mail.com', 'password', '08123456789', '1990-01-01', 'H7D3F9O1U8'),
-(uuid_generate_v4(), 'Beth', 'beth@mail.com', 'password', '08123456780', '1990-02-01', 'G1X4K2J8L'),
-(uuid_generate_v4(), 'Charles', 'charles@mail.com', 'password', '08123456781', '1990-03-01', 'Q8Y6M4P1N'),
-(uuid_generate_v4(), 'Diana', 'diana@mail.com', 'password', '08123456782', '1990-04-01', 'T5R3L1W7H'),
-(uuid_generate_v4(), 'Edward', 'edward@mail.com', 'password', '08123456783', '1990-05-01', 'Z2V8C6J9P'),
-(uuid_generate_v4(), 'Fiona', 'fiona@mail.com', 'password', '08123456784', '1990-06-01', 'B9K7H5T3M'),
-(uuid_generate_v4(), 'George', 'george@mail.com', 'password', '08123456785', '1990-07-01', 'D4W1N8R6L'),
-(uuid_generate_v4(), 'Hannah', 'hannah@mail.com', 'password', '08123456786', '1990-08-01', 'J2P9X3C7F'),
-(uuid_generate_v4(), 'Isaac', 'isaac@mail.com', 'password', '08123456787', '1990-09-01', 'L5T6Z1M3R'),
-(uuid_generate_v4(), 'Jasmine', 'jasmine@mail.com', 'password', '08123456788', '1990-10-01', 'N4V8P2K7Y'),
-(uuid_generate_v4(), 'Kevin', 'kevin@mail.com', 'password', '08123456789', '1990-11-01', 'F1C7H9M5P'),
-(uuid_generate_v4(), 'Lila', 'lila@mail.com', 'password', '08123456790', '1990-12-01', 'H3J2K8L4W'),
-(uuid_generate_v4(), 'Mark', 'mark@mail.com', 'password', '08123456791', '1990-01-02', 'K4M5L8P6N'),
-(uuid_generate_v4(), 'Nina', 'nina@mail.com', 'password', '08123456792', '1990-02-02', 'R7P1V9X3L'),
-(uuid_generate_v4(), 'Owen', 'owen@mail.com', 'password', '08123456793', '1990-03-02', 'Y5T2H6P4J'),
-(uuid_generate_v4(), 'Paula', 'paula@mail.com', 'password', '08123456794', '1990-04-02', 'M3X7K9W2L'),
-(uuid_generate_v4(), 'Quinn', 'quinn@mail.com', 'password', '08123456795', '1990-05-02', 'P4R1D8M6Z'),
-(uuid_generate_v4(), 'Rita', 'rita@mail.com', 'password', '08123456796', '1990-06-02', 'K7W3T2L9H'),
-(uuid_generate_v4(), 'Sam', 'sam@mail.com', 'password', '08123456797', '1990-07-02', 'M8Y6P5J3X'),
-(uuid_generate_v4(), 'Tina', 'tina@mail.com', 'password', '08123456798', '1990-08-02', 'N1V3R9C4P'),
-(uuid_generate_v4(), 'Ursula', 'ursula@mail.com', 'password', '08123456799', '1990-09-02', 'L5T8H7P3K'),
-(uuid_generate_v4(), 'Victor', 'victor@mail.com', 'password', '08123456800', '1990-10-02', 'R6M1P9W4Y'),
-(uuid_generate_v4(), 'Wendy', 'wendy@mail.com', 'password', '08123456801', '1990-11-02', 'X3P7K2H6N'),
-(uuid_generate_v4(), 'Xander', 'xander@mail.com', 'password', '08123456802', '1990-12-02', 'Z2T9P5W1H'),
-(uuid_generate_v4(), 'Yasmine', 'yasmine@mail.com', 'password', '08123456803', '1991-01-01', 'L4J8V3T7M'),
-(uuid_generate_v4(), 'Zack', 'zack@mail.com', 'password', '08123456804', '1991-02-01', 'C7R2P8K5H'),
-(uuid_generate_v4(), 'Alicia', 'alicia@mail.com', 'password', '08123456805', '1991-03-01', 'M1P4T6N3J'),
-(uuid_generate_v4(), 'Brian', 'brian@mail.com', 'password', '08123456806', '1991-04-01', 'W9H5T3P2L'),
-(uuid_generate_v4(), 'Cindy', 'cindy@mail.com', 'password', '08123456807', '1991-05-01', 'H3P7L9W6M'),
-(uuid_generate_v4(), 'David', 'david@mail.com', 'password', '08123456808', '1991-06-01', 'N8T5K2L4P');
+INSERT INTO account (id, name, email, password, phone, dob, referral_code, profile_image_url) VALUES
+(uuid_generate_v4(), 'Andy', 'andy@mail.com', 'password', '08123456789', '1990-01-01', 'H7D3F9O1U8', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Beth', 'beth@mail.com', 'password', '08123456780', '1990-02-01', 'G1X4K2J8L1', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Charles', 'charles@mail.com', 'password', '08123456781', '1990-03-01', 'Q8Y6M4P1N2', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Diana', 'diana@mail.com', 'password', '08123456782', '1990-04-01', 'T5R3L1W7H3', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Edward', 'edward@mail.com', 'password', '08123456783', '1990-05-01', 'Z2V8C6J9P4', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Fiona', 'fiona@mail.com', 'password', '08123456784', '1990-06-01', 'B9K7H5T3M5', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'George', 'george@mail.com', 'password', '08123456785', '1990-07-01', 'D4W1N8R6L6', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Hannah', 'hannah@mail.com', 'password', '08123456786', '1990-08-01', 'J2P9X3C7F7', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Isaac', 'isaac@mail.com', 'password', '08123456787', '1990-09-01', 'L5T6Z1M3R8', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Jasmine', 'jasmine@mail.com', 'password', '08123456788', '1990-10-01', 'N4V8P2K7Y9', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Kevin', 'kevin@mail.com', 'password', '08123456789', '1990-11-01', 'F1C7H9M5P0', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Lila', 'lila@mail.com', 'password', '08123456790', '1990-12-01', 'H3J2K8L4W9', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Mark', 'mark@mail.com', 'password', '08123456791', '1990-01-02', 'K4M5L8P6N8', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Nina', 'nina@mail.com', 'password', '08123456792', '1990-02-02', 'R7P1V9X3L7', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Owen', 'owen@mail.com', 'password', '08123456793', '1990-03-02', 'Y5T2H6P4J6', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Paula', 'paula@mail.com', 'password', '08123456794', '1990-04-02', 'M3X7K9W2L5', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Quinn', 'quinn@mail.com', 'password', '08123456795', '1990-05-02', 'P4R1D8M6Z4', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Rita', 'rita@mail.com', 'password', '08123456796', '1990-06-02', 'K7W3T2L9H3', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Sam', 'sam@mail.com', 'password', '08123456797', '1990-07-02', 'M8Y6P5J3X2', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Tina', 'tina@mail.com', 'password', '08123456798', '1990-08-02', 'N1V3R9C4P1', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Ursula', 'ursula@mail.com', 'password', '08123456799', '1990-09-02', 'L5T8H7P3K2', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Victor', 'victor@mail.com', 'password', '08123456800', '1990-10-02', 'R6M1P9W4Y3', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Wendy', 'wendy@mail.com', 'password', '08123456801', '1990-11-02', 'X3P7K2H6N4', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Xander', 'xander@mail.com', 'password', '08123456802', '1990-12-02', 'Z2T9P5W1H5', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Yasmine', 'yasmine@mail.com', 'password', '08123456803', '1991-01-01', 'L4J8V3T7M6', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Zack', 'zack@mail.com', 'password', '08123456804', '1991-02-01', 'C7R2P8K5H7', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Alicia', 'alicia@mail.com', 'password', '08123456805', '1991-03-01', 'M1P4T6N3J8', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Brian', 'brian@mail.com', 'password', '08123456806', '1991-04-01', 'W9H5T3P2L9', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'Cindy', 'cindy@mail.com', 'password', '08123456807', '1991-05-01', 'H3P7L9W6M0', 'https://picsum.photos/400/400'),
+(uuid_generate_v4(), 'David', 'david@mail.com', 'password', '08123456808', '1991-06-01', 'N8T5K2L4P9', 'https://picsum.photos/400/400');
 
 INSERT INTO session (id, account_id, access_token, refresh_token, access_token_expired_at, refresh_token_expired_at)
 SELECT uuid_generate_v4(), id, uuid_generate_v4(), uuid_generate_v4(), now() + interval '1 hour', now() + interval '1 day' 
@@ -199,37 +201,37 @@ INSERT INTO point (id, account_id, fixed_amount, ended_at)
 SELECT uuid_generate_v4(), id, floor(random() * 10001), now() + interval '3 months' 
 FROM account;
 
-INSERT INTO event (id, account_id, name, description, location, category, time) VALUES
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Music Festival', 'An outdoor music festival with various artists.', 'https://goo.gl/maps/abc123', 'Entertainment', '2024-12-01 18:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Art Exhibition', 'An exhibition showcasing modern art.', 'https://goo.gl/maps/def456', 'Art', '2025-01-15 10:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Tech Conference', 'Annual conference for tech enthusiasts.', 'https://goo.gl/maps/ghi789', 'Conference', '2025-02-20 09:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 3), 'Cooking Workshop', 'Hands-on cooking workshop with a celebrity chef.', 'https://goo.gl/maps/jkl012', 'Workshop', '2025-03-05 14:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 4), 'Charity Run', 'A 5K run to raise funds for charity.', 'https://goo.gl/maps/mno345', 'Sports', '2025-04-10 07:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 5), 'Book Launch', 'Launch event for a new book by a bestselling author.', 'https://goo.gl/maps/pqr678', 'Literature', '2025-05-01 18:30:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 6), 'Yoga Retreat', 'A weekend retreat focusing on yoga and wellness.', 'https://goo.gl/maps/stu901', 'Health', '2025-06-15 08:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 7), 'Film Screening', 'Special screening of an indie film.', 'https://goo.gl/maps/vwx234', 'Entertainment', '2025-07-20 20:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 8), 'Science Fair', 'Annual science fair showcasing student projects.', 'https://goo.gl/maps/yza567', 'Education', '2025-08-10 09:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 9), 'Gardening Workshop', 'Learn about urban gardening techniques.', 'https://goo.gl/maps/bcd890', 'Workshop', '2025-09-05 13:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 10), 'Dance Performance', 'A contemporary dance performance.', 'https://goo.gl/maps/efg123', 'Entertainment', '2025-10-01 19:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 11), 'Business Meetup', 'Networking event for business professionals.', 'https://goo.gl/maps/hij456', 'Networking', '2025-11-15 17:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 12), 'Photography Exhibition', 'Exhibition featuring travel photography.', 'https://goo.gl/maps/klm789', 'Art', '2025-12-20 11:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 13), 'Fitness Bootcamp', 'Intense fitness bootcamp session.', 'https://goo.gl/maps/nop012', 'Health', '2026-01-05 06:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 14), 'Cooking Class', 'Learn to cook traditional dishes.', 'https://goo.gl/maps/qrs345', 'Workshop', '2026-02-12 14:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 15), 'Career Fair', 'Career fair for recent graduates.', 'https://goo.gl/maps/tuv678', 'Education', '2026-03-10 10:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 16), 'Music Concert', 'Live concert by a popular band.', 'https://goo.gl/maps/wxy901', 'Entertainment', '2026-04-25 20:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 17), 'Theater Play', 'Local theater group performing a classic play.', 'https://goo.gl/maps/zab234', 'Entertainment', '2026-05-18 19:30:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 18), 'Workshop on Coding', 'Introductory workshop on programming.', 'https://goo.gl/maps/cde567', 'Education', '2026-06-07 09:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 19), 'Environmental Seminar', 'Seminar on climate change and sustainability.', 'https://goo.gl/maps/fgh890', 'Education', '2026-07-22 14:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 20), 'Food Festival', 'A festival celebrating local cuisine.', 'https://goo.gl/maps/ijk123', 'Entertainment', '2026-08-30 12:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 21), 'Mindfulness Retreat', 'A weekend retreat focusing on mindfulness and meditation.', 'https://goo.gl/maps/lmn456', 'Health', '2026-09-18 08:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 22), 'Charity Gala', 'A gala event to raise funds for charity.', 'https://goo.gl/maps/opq789', 'Networking', '2026-10-10 18:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 23), 'Cultural Festival', 'A festival celebrating diverse cultures.', 'https://goo.gl/maps/rst012', 'Entertainment', '2026-11-05 10:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 24), 'Public Speaking Workshop', 'Improve your public speaking skills.', 'https://goo.gl/maps/uvw345', 'Workshop', '2026-12-01 09:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 25), 'Product Launch', 'Launch event for a new tech product.', 'https://goo.gl/maps/xyz678', 'Conference', '2026-12-15 15:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 26), 'Art Fair', 'A fair showcasing local artists and their work.', 'https://goo.gl/maps/abc901', 'Art', '2027-01-20 10:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 27), 'Writing Workshop', 'Workshop on creative writing techniques.', 'https://goo.gl/maps/def234', 'Workshop', '2027-02-05 14:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 28), 'Health Fair', 'A fair promoting health and wellness.', 'https://goo.gl/maps/ghi567', 'Health', '2027-03-10 08:00:00'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 29), 'Innovation Summit', 'Summit on innovation and entrepreneurship.', 'https://goo.gl/maps/jkl890', 'Conference', '2027-04-25 09:00:00');
+INSERT INTO event (id, account_id, name, description, location, category, time, banner_image_url) VALUES
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Music Festival', 'An outdoor music festival with various artists.', 'https://goo.gl/maps/abc123', 'Entertainment', '2024-12-01T18:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Art Exhibition', 'An exhibition showcasing modern art.', 'https://goo.gl/maps/def456', 'Art', '2025-01-15T10:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Tech Conference', 'Annual conference for tech enthusiasts.', 'https://goo.gl/maps/ghi789', 'Conference', '2025-02-20T09:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 3), 'Cooking Workshop', 'Hands-on cooking workshop with a celebrity chef.', 'https://goo.gl/maps/jkl012', 'Workshop', '2025-03-05T14:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 4), 'Charity Run', 'A 5K run to raise funds for charity.', 'https://goo.gl/maps/mno345', 'Sports', '2025-04-10T07:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 5), 'Book Launch', 'Launch event for a new book by a bestselling author.', 'https://goo.gl/maps/pqr678', 'Literature', '2025-05-01T18:30:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 6), 'Yoga Retreat', 'A weekend retreat focusing on yoga and wellness.', 'https://goo.gl/maps/stu901', 'Health', '2025-06-15T08:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 7), 'Film Screening', 'Special screening of an indie film.', 'https://goo.gl/maps/vwx234', 'Entertainment', '2025-07-20T20:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 8), 'Science Fair', 'Annual science fair showcasing student projects.', 'https://goo.gl/maps/yza567', 'Education', '2025-08-10T09:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 9), 'Gardening Workshop', 'Learn about urban gardening techniques.', 'https://goo.gl/maps/bcd890', 'Workshop', '2025-09-05T13:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 10), 'Dance Performance', 'A contemporary dance performance.', 'https://goo.gl/maps/efg123', 'Entertainment', '2025-10-01T19:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 11), 'Business Meetup', 'Networking event for business professionals.', 'https://goo.gl/maps/hij456', 'Networking', '2025-11-15T17:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 12), 'Photography Exhibition', 'Exhibition featuring travel photography.', 'https://goo.gl/maps/klm789', 'Art', '2025-12-20T11:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 13), 'Fitness Bootcamp', 'Intense fitness bootcamp session.', 'https://goo.gl/maps/nop012', 'Health', '2026-01-05T06:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 14), 'Cooking Class', 'Learn to cook traditional dishes.', 'https://goo.gl/maps/qrs345', 'Workshop', '2026-02-12T14:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 15), 'Career Fair', 'Career fair for recent graduates.', 'https://goo.gl/maps/tuv678', 'Education', '2026-03-10T10:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 16), 'Music Concert', 'Live concert by a popular band.', 'https://goo.gl/maps/wxy901', 'Entertainment', '2026-04-25T20:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 17), 'Theater Play', 'Local theater group performing a classic play.', 'https://goo.gl/maps/zab234', 'Entertainment', '2026-05-18T19:30:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 18), 'Workshop on Coding', 'Introductory workshop on programming.', 'https://goo.gl/maps/cde567', 'Education', '2026-06-07T09:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 19), 'Environmental Seminar', 'Seminar on climate change and sustainability.', 'https://goo.gl/maps/fgh890', 'Education', '2026-07-22T14:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 20), 'Food Festival', 'A festival celebrating local cuisine.', 'https://goo.gl/maps/ijk123', 'Entertainment', '2026-08-30T12:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 21), 'Mindfulness Retreat', 'A weekend retreat focusing on mindfulness and meditation.', 'https://goo.gl/maps/lmn456', 'Health', '2026-09-18T08:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 22), 'Charity Gala', 'A gala event to raise funds for charity.', 'https://goo.gl/maps/opq789', 'Networking', '2026-10-10T18:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 23), 'Cultural Festival', 'A festival celebrating diverse cultures.', 'https://goo.gl/maps/rst012', 'Entertainment', '2026-11-05T10:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 24), 'Public Speaking Workshop', 'Improve your public speaking skills.', 'https://goo.gl/maps/uvw345', 'Workshop', '2026-12-01T09:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 25), 'Product Launch', 'Launch event for a new tech product.', 'https://goo.gl/maps/xyz678', 'Conference', '2026-12-15T15:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 26), 'Art Fair', 'A fair showcasing local artists and their work.', 'https://goo.gl/maps/abc901', 'Art', '2027-01-20T10:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 27), 'Writing Workshop', 'Workshop on creative writing techniques.', 'https://goo.gl/maps/def234', 'Workshop', '2027-02-05T14:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 28), 'Health Fair', 'A fair promoting health and wellness.', 'https://goo.gl/maps/ghi567', 'Health', '2027-03-10T08:00:00+00:00', 'https://picsum.photos/1366/768'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 29), 'Innovation Summit', 'Summit on innovation and entrepreneurship.', 'https://goo.gl/maps/jkl890', 'Conference', '2027-04-25T09:00:00+00:00', 'https://picsum.photos/1366/768');
 
 INSERT INTO transaction (id, event_id, account_id, timestamp) VALUES
 (uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 0), now() - interval '1 day'),

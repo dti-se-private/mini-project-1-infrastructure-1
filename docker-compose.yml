@@ -8,6 +8,8 @@ services:
       - "${FRONTEND_1_PORT}:3000"
     env_file:
       - ./.env
+    volumes:
+      - /root/teamcity/data/${AGENT_NAME}/work/${CHECKOUT_DIR}/.env:/workdir/.env
   backend-1:
     image: dti-se-private/mini-project-1-backend-1:latest
     build:
@@ -17,6 +19,8 @@ services:
       - "${BACKEND_1_PORT}:8080"
     env_file:
       - ./.env
+    volumes:
+      - /root/teamcity/data/${AGENT_NAME}/work/${CHECKOUT_DIR}/.env:/workdir/.env
   datastore-1:
     image: postgres:latest
     ports:
@@ -27,8 +31,8 @@ services:
       POSTGRES_DB: ${DATASTORE_1_DATABASE}
       PGDATA: /var/lib/pg_data
     volumes:
-      - ./volumes/datastore-1:/var/lib/postgresql/data
-      - ./migration.sql:/docker-entrypoint-initdb.d/migration.sql
+      - /root/teamcity/data/${AGENT_NAME}/work/${CHECKOUT_DIR}/volumes/datastore-1:/var/lib/postgresql/data
+      - /root/teamcity/data/${AGENT_NAME}/work/${CHECKOUT_DIR}/migration-1.sql:/docker-entrypoint-initdb.d/migration-1.sql
   datastore-2:
     image: redis/redis-stack-server:latest
     ports:
@@ -36,4 +40,4 @@ services:
     environment:
       - REDIS_ARGS=--requirepass ${DATASTORE_2_PASSWORD}
     volumes:
-      - ./volumes/datastore-2:/data
+      - /root/teamcity/data/${AGENT_NAME}/work/${CHECKOUT_DIR}/volumes/datastore-2:/data

@@ -1,5 +1,6 @@
 -- extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "pg_trgm";
 
 -- ddl
 DROP TABLE IF EXISTS account CASCADE;
@@ -298,23 +299,23 @@ INSERT INTO feedback (id, transaction_id, account_id, rating, review) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 29), (SELECT id FROM account LIMIT 1 OFFSET 9), 4, 'Quite good, met expectations.');
 
 INSERT INTO account_voucher (id, account_id, voucher_id, quantity)
-SELECT uuid_generate_v4(), account.id, voucher.id, floor(random() * 11) 
+SELECT uuid_generate_v4(), account.id, voucher.id, floor(random() * 101) 
 FROM account, voucher;
 
 INSERT INTO event_voucher (id, voucher_id, event_id)
 SELECT uuid_generate_v4(), voucher.id, event.id 
-FROM voucher, event;
+FROM event, voucher;
 
 INSERT INTO transaction_voucher (id, transaction_id, voucher_id, quantity)
-SELECT uuid_generate_v4(), transaction.id, voucher.id, floor(random() * 11) 
+SELECT uuid_generate_v4(), transaction.id, voucher.id, floor(random() * 101) 
 FROM transaction, voucher;
 
 INSERT INTO transaction_point (id, transaction_id, point_id, fixed_amount)
 SELECT uuid_generate_v4(), transaction.id, point.id, 10000 - point.fixed_amount 
 FROM transaction, point;
 
-INSERT INTO event_ticket (id, event_id, name, price, slots)
-SELECT uuid_generate_v4(), event.id, 'reguler', floor(random() * 300001), floor(random() * (20) + 1) * 50 
+INSERT INTO event_ticket (id, event_id, name, description, price, slots)
+SELECT uuid_generate_v4(), event.id, 'Standard Ticket', 'Standard ticket for attending the event.', floor(random() * 300001), floor(random() * 1001)
 FROM event;
 
 INSERT INTO event_ticket_field (id, event_ticket_id, key)
@@ -359,3 +360,8 @@ LIMIT 1 OFFSET 0;
 
 
 
+select *
+from event
+order by SIMILARITY(name::text, 'art') desc
+limit 1 
+offset 0;

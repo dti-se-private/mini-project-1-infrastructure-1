@@ -62,7 +62,7 @@ CREATE TABLE transaction (
     id UUID PRIMARY KEY,
     event_id UUID REFERENCES event(id) ON DELETE CASCADE ON UPDATE CASCADE,
     account_id UUID REFERENCES account(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    timestamp TIMESTAMPTZ
+    time TIMESTAMPTZ
 );
 
 DROP TABLE IF EXISTS feedback CASCADE;
@@ -119,7 +119,8 @@ DROP TABLE IF EXISTS event_ticket_field CASCADE;
 CREATE TABLE event_ticket_field (
     id UUID PRIMARY KEY,
     event_ticket_id UUID REFERENCES event_ticket(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    key TEXT
+    key TEXT,
+    CONSTRAINT unique_key UNIQUE (event_ticket_id, key)
 );
 
 DROP TABLE IF EXISTS transaction_ticket_field CASCADE;
@@ -234,7 +235,7 @@ INSERT INTO event (id, account_id, name, description, location, category, time, 
 (uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 27), 'Writing Workshop', 'Workshop on creative writing techniques.', 'IVAA (Indonesian Visual Art Archive), Yogyakarta', 'Workshop', '2027-02-05T14:00:00+00:00', 'https://placehold.co/1366x768?text=event27'),
 (uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 28), 'Health Fair', 'A fair promoting health and wellness.', 'Mall Kelapa Gading, Jakarta', 'Health', '2027-03-10T08:00:00+00:00', 'https://placehold.co/1366x768?text=event28'),
 (uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 29), 'Innovation Summit', 'Summit on innovation and entrepreneurship.', 'Block71 Jakarta', 'Conference', '2027-04-25T09:00:00+00:00', 'https://placehold.co/1366x768?text=event29');
-INSERT INTO transaction (id, event_id, account_id, timestamp) VALUES
+INSERT INTO transaction (id, event_id, account_id, time) VALUES
 (uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 0), now() - interval '1 day'),
 (uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 1), now() - interval '2 days'),
 (uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 2), now() - interval '3 days'),
@@ -265,7 +266,6 @@ INSERT INTO transaction (id, event_id, account_id, timestamp) VALUES
 (uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 27), now() - interval '28 days'),
 (uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 28), now() - interval '29 days'),
 (uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 29), now() - interval '30 days');
-
 INSERT INTO feedback (id, transaction_id, account_id, rating, review) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 0), 5, 'Excellent service! Highly recommend.'),
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 1), 4, 'Very good, but room for improvement.'),
@@ -358,10 +358,10 @@ INNER JOIN transaction_ticket_field ON transaction_ticket_field.transaction_id =
 WHERE account.id in (SELECT id FROM account LIMIT 1 OFFSET 0)
 LIMIT 1 OFFSET 0;
 
-
-
 select *
 from event
 order by SIMILARITY(name::text, 'art') desc
 limit 1 
 offset 0;
+
+select * from event 

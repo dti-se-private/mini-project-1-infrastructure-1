@@ -1,4 +1,3 @@
--- Active: 1732281362598@@127.0.0.1@5432
 -- extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
@@ -133,36 +132,36 @@ CREATE TABLE transaction_ticket_field (
 
 -- dml
 INSERT INTO account (id, name, email, password, phone, dob, referral_code, profile_image_url) VALUES
-(uuid_generate_v4(), 'Andy', 'andy@mail.com', 'password', '08123456789', '1990-01-01', 'H7D3F9O1U8', 'https://placehold.co/400x400?text=account0'),
-(uuid_generate_v4(), 'Beth', 'beth@mail.com', 'password', '08123456780', '1990-02-01', 'G1X4K2J8L1', 'https://placehold.co/400x400?text=account1'),
-(uuid_generate_v4(), 'Charles', 'charles@mail.com', 'password', '08123456781', '1990-03-01', 'Q8Y6M4P1N2', 'https://placehold.co/400x400?text=account2'),
-(uuid_generate_v4(), 'Diana', 'diana@mail.com', 'password', '08123456782', '1990-04-01', 'T5R3L1W7H3', 'https://placehold.co/400x400?text=account3'),
-(uuid_generate_v4(), 'Edward', 'edward@mail.com', 'password', '08123456783', '1990-05-01', 'Z2V8C6J9P4', 'https://placehold.co/400x400?text=account4'),
-(uuid_generate_v4(), 'Fiona', 'fiona@mail.com', 'password', '08123456784', '1990-06-01', 'B9K7H5T3M5', 'https://placehold.co/400x400?text=account5'),
-(uuid_generate_v4(), 'George', 'george@mail.com', 'password', '08123456785', '1990-07-01', 'D4W1N8R6L6', 'https://placehold.co/400x400?text=account6'),
-(uuid_generate_v4(), 'Hannah', 'hannah@mail.com', 'password', '08123456786', '1990-08-01', 'J2P9X3C7F7', 'https://placehold.co/400x400?text=account7'),
-(uuid_generate_v4(), 'Isaac', 'isaac@mail.com', 'password', '08123456787', '1990-09-01', 'L5T6Z1M3R8', 'https://placehold.co/400x400?text=account8'),
-(uuid_generate_v4(), 'Jasmine', 'jasmine@mail.com', 'password', '08123456788', '1990-10-01', 'N4V8P2K7Y9', 'https://placehold.co/400x400?text=account9'),
-(uuid_generate_v4(), 'Kevin', 'kevin@mail.com', 'password', '08123456789', '1990-11-01', 'F1C7H9M5P0', 'https://placehold.co/400x400?text=account10'),
-(uuid_generate_v4(), 'Lila', 'lila@mail.com', 'password', '08123456790', '1990-12-01', 'H3J2K8L4W9', 'https://placehold.co/400x400?text=account11'),
-(uuid_generate_v4(), 'Mark', 'mark@mail.com', 'password', '08123456791', '1990-01-02', 'K4M5L8P6N8', 'https://placehold.co/400x400?text=account12'),
-(uuid_generate_v4(), 'Nina', 'nina@mail.com', 'password', '08123456792', '1990-02-02', 'R7P1V9X3L7', 'https://placehold.co/400x400?text=account13'),
-(uuid_generate_v4(), 'Owen', 'owen@mail.com', 'password', '08123456793', '1990-03-02', 'Y5T2H6P4J6', 'https://placehold.co/400x400?text=account14'),
-(uuid_generate_v4(), 'Paula', 'paula@mail.com', 'password', '08123456794', '1990-04-02', 'M3X7K9W2L5', 'https://placehold.co/400x400?text=account15'),
-(uuid_generate_v4(), 'Quinn', 'quinn@mail.com', 'password', '08123456795', '1990-05-02', 'P4R1D8M6Z4', 'https://placehold.co/400x400?text=account16'),
-(uuid_generate_v4(), 'Rita', 'rita@mail.com', 'password', '08123456796', '1990-06-02', 'K7W3T2L9H3', 'https://placehold.co/400x400?text=account17'),
-(uuid_generate_v4(), 'Sam', 'sam@mail.com', 'password', '08123456797', '1990-07-02', 'M8Y6P5J3X2', 'https://placehold.co/400x400?text=account18'),
-(uuid_generate_v4(), 'Tina', 'tina@mail.com', 'password', '08123456798', '1990-08-02', 'N1V3R9C4P1', 'https://placehold.co/400x400?text=account19'),
-(uuid_generate_v4(), 'Ursula', 'ursula@mail.com', 'password', '08123456799', '1990-09-02', 'L5T8H7P3K2', 'https://placehold.co/400x400?text=account20'),
-(uuid_generate_v4(), 'Victor', 'victor@mail.com', 'password', '08123456800', '1990-10-02', 'R6M1P9W4Y3', 'https://placehold.co/400x400?text=account21'),
-(uuid_generate_v4(), 'Wendy', 'wendy@mail.com', 'password', '08123456801', '1990-11-02', 'X3P7K2H6N4', 'https://placehold.co/400x400?text=account22'),
-(uuid_generate_v4(), 'Xander', 'xander@mail.com', 'password', '08123456802', '1990-12-02', 'Z2T9P5W1H5', 'https://placehold.co/400x400?text=account23'),
-(uuid_generate_v4(), 'Yasmine', 'yasmine@mail.com', 'password', '08123456803', '1991-01-01', 'L4J8V3T7M6', 'https://placehold.co/400x400?text=account24'),
-(uuid_generate_v4(), 'Zack', 'zack@mail.com', 'password', '08123456804', '1991-02-01', 'C7R2P8K5H7', 'https://placehold.co/400x400?text=account25'),
-(uuid_generate_v4(), 'Alicia', 'alicia@mail.com', 'password', '08123456805', '1991-03-01', 'M1P4T6N3J8', 'https://placehold.co/400x400?text=account26'),
-(uuid_generate_v4(), 'Brian', 'brian@mail.com', 'password', '08123456806', '1991-04-01', 'W9H5T3P2L9', 'https://placehold.co/400x400?text=account27'),
-(uuid_generate_v4(), 'Cindy', 'cindy@mail.com', 'password', '08123456807', '1991-05-01', 'H3P7L9W6M0', 'https://placehold.co/400x400?text=account28'),
-(uuid_generate_v4(), 'David', 'david@mail.com', 'password', '08123456808', '1991-06-01', 'N8T5K2L4P9', 'https://placehold.co/400x400?text=account29');
+(uuid_generate_v4(), 'admin', 'admin@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456789', '1990-01-01', 'H7D3F9O1U8', 'https://placehold.co/400x400?text=account0'),
+(uuid_generate_v4(), 'Beth', 'beth@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456780', '1990-02-01', 'G1X4K2J8L1', 'https://placehold.co/400x400?text=account1'),
+(uuid_generate_v4(), 'Charles', 'charles@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456781', '1990-03-01', 'Q8Y6M4P1N2', 'https://placehold.co/400x400?text=account2'),
+(uuid_generate_v4(), 'Diana', 'diana@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456782', '1990-04-01', 'T5R3L1W7H3', 'https://placehold.co/400x400?text=account3'),
+(uuid_generate_v4(), 'Edward', 'edward@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456783', '1990-05-01', 'Z2V8C6J9P4', 'https://placehold.co/400x400?text=account4'),
+(uuid_generate_v4(), 'Fiona', 'fiona@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456784', '1990-06-01', 'B9K7H5T3M5', 'https://placehold.co/400x400?text=account5'),
+(uuid_generate_v4(), 'George', 'george@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456785', '1990-07-01', 'D4W1N8R6L6', 'https://placehold.co/400x400?text=account6'),
+(uuid_generate_v4(), 'Hannah', 'hannah@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456786', '1990-08-01', 'J2P9X3C7F7', 'https://placehold.co/400x400?text=account7'),
+(uuid_generate_v4(), 'Isaac', 'isaac@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456787', '1990-09-01', 'L5T6Z1M3R8', 'https://placehold.co/400x400?text=account8'),
+(uuid_generate_v4(), 'Jasmine', 'jasmine@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456788', '1990-10-01', 'N4V8P2K7Y9', 'https://placehold.co/400x400?text=account9'),
+(uuid_generate_v4(), 'Kevin', 'kevin@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456789', '1990-11-01', 'F1C7H9M5P0', 'https://placehold.co/400x400?text=account10'),
+(uuid_generate_v4(), 'Lila', 'lila@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456790', '1990-12-01', 'H3J2K8L4W9', 'https://placehold.co/400x400?text=account11'),
+(uuid_generate_v4(), 'Mark', 'mark@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456791', '1990-01-02', 'K4M5L8P6N8', 'https://placehold.co/400x400?text=account12'),
+(uuid_generate_v4(), 'Nina', 'nina@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456792', '1990-02-02', 'R7P1V9X3L7', 'https://placehold.co/400x400?text=account13'),
+(uuid_generate_v4(), 'Owen', 'owen@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456793', '1990-03-02', 'Y5T2H6P4J6', 'https://placehold.co/400x400?text=account14'),
+(uuid_generate_v4(), 'Paula', 'paula@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456794', '1990-04-02', 'M3X7K9W2L5', 'https://placehold.co/400x400?text=account15'),
+(uuid_generate_v4(), 'Quinn', 'quinn@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456795', '1990-05-02', 'P4R1D8M6Z4', 'https://placehold.co/400x400?text=account16'),
+(uuid_generate_v4(), 'Rita', 'rita@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456796', '1990-06-02', 'K7W3T2L9H3', 'https://placehold.co/400x400?text=account17'),
+(uuid_generate_v4(), 'Sam', 'sam@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456797', '1990-07-02', 'M8Y6P5J3X2', 'https://placehold.co/400x400?text=account18'),
+(uuid_generate_v4(), 'Tina', 'tina@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456798', '1990-08-02', 'N1V3R9C4P1', 'https://placehold.co/400x400?text=account19'),
+(uuid_generate_v4(), 'Ursula', 'ursula@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456799', '1990-09-02', 'L5T8H7P3K2', 'https://placehold.co/400x400?text=account20'),
+(uuid_generate_v4(), 'Victor', 'victor@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456800', '1990-10-02', 'R6M1P9W4Y3', 'https://placehold.co/400x400?text=account21'),
+(uuid_generate_v4(), 'Wendy', 'wendy@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456801', '1990-11-02', 'X3P7K2H6N4', 'https://placehold.co/400x400?text=account22'),
+(uuid_generate_v4(), 'Xander', 'xander@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456802', '1990-12-02', 'Z2T9P5W1H5', 'https://placehold.co/400x400?text=account23'),
+(uuid_generate_v4(), 'Yasmine', 'yasmine@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456803', '1991-01-01', 'L4J8V3T7M6', 'https://placehold.co/400x400?text=account24'),
+(uuid_generate_v4(), 'Zack', 'zack@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456804', '1991-02-01', 'C7R2P8K5H7', 'https://placehold.co/400x400?text=account25'),
+(uuid_generate_v4(), 'Alicia', 'alicia@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456805', '1991-03-01', 'M1P4T6N3J8', 'https://placehold.co/400x400?text=account26'),
+(uuid_generate_v4(), 'Brian', 'brian@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456806', '1991-04-01', 'W9H5T3P2L9', 'https://placehold.co/400x400?text=account27'),
+(uuid_generate_v4(), 'Cindy', 'cindy@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456807', '1991-05-01', 'H3P7L9W6M0', 'https://placehold.co/400x400?text=account28'),
+(uuid_generate_v4(), 'David', 'david@mail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '08123456808', '1991-06-01', 'N8T5K2L4P9', 'https://placehold.co/400x400?text=account29');
 
 INSERT INTO session (id, account_id, access_token, refresh_token, access_token_expired_at, refresh_token_expired_at)
 SELECT uuid_generate_v4(), id, uuid_generate_v4(), uuid_generate_v4(), now() + interval '1 hour', now() + interval '1 day' 
@@ -206,66 +205,66 @@ FROM account;
 
 INSERT INTO event (id, account_id, name, description, location, category, time, banner_image_url) VALUES
 (uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Music Festival', 'An outdoor music festival with various artists.', 'JIExpo Kemayoran, Jakarta, Indonesia', 'Entertainment', '2024-12-01T18:00:00+00:00', 'https://placehold.co/1366x768?text=event0'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Art Exhibition', 'An exhibition showcasing modern art.', 'National Gallery of Indonesia, Jakarta', 'Art', '2025-01-15T10:00:00+00:00', 'https://placehold.co/1366x768?text=event1'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Tech Conference', 'Annual conference for tech enthusiasts.', 'Bandung Institute of Technology, Bandung, Indonesia', 'Conference', '2025-02-20T09:00:00+00:00', 'https://placehold.co/1366x768?text=event2'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 3), 'Cooking Workshop', 'Hands-on cooking workshop with a celebrity chef.', 'Arkamaya Seminyak, Bali, Indonesia', 'Workshop', '2025-03-05T14:00:00+00:00', 'https://placehold.co/1366x768?text=event3'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 4), 'Charity Run', 'A 5K run to raise funds for charity.', 'Gelora Bung Karno Stadium, Jakarta', 'Sports', '2025-04-10T07:00:00+00:00', 'https://placehold.co/1366x768?text=event4'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 5), 'Book Launch', 'Launch event for a new book by a bestselling author.', 'Kinokuniya Plaza Senayan, Jakarta', 'Literature', '2025-05-01T18:30:00+00:00', 'https://placehold.co/1366x768?text=event5'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 6), 'Yoga Retreat', 'A weekend retreat focusing on yoga and wellness.', 'The Yoga Barn, Ubud, Bali', 'Health', '2025-06-15T08:00:00+00:00', 'https://placehold.co/1366x768?text=event6'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 7), 'Film Screening', 'Special screening of an indie film.', 'CGV Grand Indonesia, Jakarta', 'Entertainment', '2025-07-20T20:00:00+00:00', 'https://placehold.co/1366x768?text=event7'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 8), 'Science Fair', 'Annual science fair showcasing student projects.', 'Universitas Indonesia, Depok', 'Education', '2025-08-10T09:00:00+00:00', 'https://placehold.co/1366x768?text=event8'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 9), 'Gardening Workshop', 'Learn about urban gardening techniques.', 'Taman Menteng, Jakarta', 'Workshop', '2025-09-05T13:00:00+00:00', 'https://placehold.co/1366x768?text=event9'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 10), 'Dance Performance', 'A contemporary dance performance.', 'Teater Jakarta, Taman Ismail Marzuki, Jakarta',  'Entertainment', '2025-10-01T19:00:00+00:00', 'https://placehold.co/1366x768?text=event10'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 11), 'Business Meetup', 'Networking event for business professionals.', 'The Ritz-Carlton Jakarta, Pacific Place', 'Networking', '2025-11-15T17:00:00+00:00', 'https://placehold.co/1366x768?text=event11'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 12), 'Photography Exhibition', 'Exhibition featuring travel photography.', 'Dia.Lo.Gue Artspace, Kemang, Jakarta', 'Art', '2025-12-20T11:00:00+00:00', 'https://placehold.co/1366x768?text=event12'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 13), 'Fitness Bootcamp', 'Intense fitness bootcamp session.', 'Taman Suropati, Jakarta', 'Health', '2026-01-05T06:00:00+00:00', 'https://placehold.co/1366x768?text=event13'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 14), 'Cooking Class', 'Learn to cook traditional dishes.', 'Amuz Gourmet Restaurant, Jakarta', 'Workshop', '2026-02-12T14:00:00+00:00', 'https://placehold.co/1366x768?text=event14'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 15), 'Career Fair', 'Career fair for recent graduates.', 'Jakarta Convention Center', 'Education', '2026-03-10T10:00:00+00:00', 'https://placehold.co/1366x768?text=event15'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 16), 'Music Concert', 'Live concert by a popular band.', 'ICE BSD, Tangerang', 'Entertainment', '2026-04-25T20:00:00+00:00', 'https://placehold.co/1366x768?text=event16'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 17), 'Theater Play', 'Local theater group performing a classic play.', 'Gedung Kesenian Jakarta', 'Entertainment', '2026-05-18T19:30:00+00:00', 'https://placehold.co/1366x768?text=event17'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 18), 'Workshop on Coding', 'Introductory workshop on programming.', 'Google Indonesia, Jakarta', 'Education', '2026-06-07T09:00:00+00:00', 'https://placehold.co/1366x768?text=event18'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 19), 'Environmental Seminar', 'Seminar on climate change and sustainability.', 'The Dharmawangsa Jakarta', 'Education', '2026-07-22T14:00:00+00:00', 'https://placehold.co/1366x768?text=event19'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 20), 'Food Festival', 'A festival celebrating local cuisine.', 'Grand Indonesia Shopping Town, Jakarta', 'Entertainment', '2026-08-30T12:00:00+00:00', 'https://placehold.co/1366x768?text=event20'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 21), 'Mindfulness Retreat', 'A weekend retreat focusing on mindfulness and meditation.', 'Fivelements, Bali', 'Health', '2026-09-18T08:00:00+00:00', 'https://placehold.co/1366x768?text=event21'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 22), 'Charity Gala', 'A gala event to raise funds for charity.', 'Hotel Mulia Senayan, Jakarta', 'Networking', '2026-10-10T18:00:00+00:00', 'https://placehold.co/1366x768?text=event22'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 23), 'Cultural Festival', 'A festival celebrating diverse cultures.', 'Taman Mini Indonesia Indah, Jakarta', 'Entertainment', '2026-11-05T10:00:00+00:00', 'https://placehold.co/1366x768?text=event23'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 24), 'Public Speaking Workshop', 'Improve your public speaking skills.', 'Senayan City, Jakarta', 'Workshop', '2026-12-01T09:00:00+00:00', 'https://placehold.co/1366x768?text=event24'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 25), 'Product Launch', 'Launch event for a new tech product.', ' Ritz-Carlton Mega Kuningan, Jakarta', 'Conference', '2026-12-15T15:00:00+00:00', 'https://placehold.co/1366x768?text=event25'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 26), 'Art Fair', 'A fair showcasing local artists and their work.', 'ARTJOG, Yogyakarta', 'Art', '2027-01-20T10:00:00+00:00', 'https://placehold.co/1366x768?text=event26'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 27), 'Writing Workshop', 'Workshop on creative writing techniques.', 'IVAA (Indonesian Visual Art Archive), Yogyakarta', 'Workshop', '2027-02-05T14:00:00+00:00', 'https://placehold.co/1366x768?text=event27'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 28), 'Health Fair', 'A fair promoting health and wellness.', 'Mall Kelapa Gading, Jakarta', 'Health', '2027-03-10T08:00:00+00:00', 'https://placehold.co/1366x768?text=event28'),
-(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 29), 'Innovation Summit', 'Summit on innovation and entrepreneurship.', 'Block71 Jakarta', 'Conference', '2027-04-25T09:00:00+00:00', 'https://placehold.co/1366x768?text=event29');
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Art Exhibition', 'An exhibition showcasing modern art.', 'National Gallery of Indonesia, Jakarta', 'Art', '2025-01-15T10:00:00+00:00', 'https://placehold.co/1366x768?text=event1'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Tech Conference', 'Annual conference for tech enthusiasts.', 'Bandung Institute of Technology, Bandung, Indonesia', 'Conference', '2025-02-20T09:00:00+00:00', 'https://placehold.co/1366x768?text=event2'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Cooking Workshop', 'Hands-on cooking workshop with a celebrity chef.', 'Arkamaya Seminyak, Bali, Indonesia', 'Workshop', '2025-03-05T14:00:00+00:00', 'https://placehold.co/1366x768?text=event3'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Charity Run', 'A 5K run to raise funds for charity.', 'Gelora Bung Karno Stadium, Jakarta', 'Sports', '2025-04-10T07:00:00+00:00', 'https://placehold.co/1366x768?text=event4'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Book Launch', 'Launch event for a new book by a bestselling author.', 'Kinokuniya Plaza Senayan, Jakarta', 'Literature', '2025-05-01T18:30:00+00:00', 'https://placehold.co/1366x768?text=event5'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Yoga Retreat', 'A weekend retreat focusing on yoga and wellness.', 'The Yoga Barn, Ubud, Bali', 'Health', '2025-06-15T08:00:00+00:00', 'https://placehold.co/1366x768?text=event6'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Film Screening', 'Special screening of an indie film.', 'CGV Grand Indonesia, Jakarta', 'Entertainment', '2025-07-20T20:00:00+00:00', 'https://placehold.co/1366x768?text=event7'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Science Fair', 'Annual science fair showcasing student projects.', 'Universitas Indonesia, Depok', 'Education', '2025-08-10T09:00:00+00:00', 'https://placehold.co/1366x768?text=event8'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), 'Gardening Workshop', 'Learn about urban gardening techniques.', 'Taman Menteng, Jakarta', 'Workshop', '2025-09-05T13:00:00+00:00', 'https://placehold.co/1366x768?text=event9'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Dance Performance', 'A contemporary dance performance.', 'Teater Jakarta, Taman Ismail Marzuki, Jakarta',  'Entertainment', '2025-10-01T19:00:00+00:00', 'https://placehold.co/1366x768?text=event10'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Business Meetup', 'Networking event for business professionals.', 'The Ritz-Carlton Jakarta, Pacific Place', 'Networking', '2025-11-15T17:00:00+00:00', 'https://placehold.co/1366x768?text=event11'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Photography Exhibition', 'Exhibition featuring travel photography.', 'Dia.Lo.Gue Artspace, Kemang, Jakarta', 'Art', '2025-12-20T11:00:00+00:00', 'https://placehold.co/1366x768?text=event12'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Fitness Bootcamp', 'Intense fitness bootcamp session.', 'Taman Suropati, Jakarta', 'Health', '2026-01-05T06:00:00+00:00', 'https://placehold.co/1366x768?text=event13'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Cooking Class', 'Learn to cook traditional dishes.', 'Amuz Gourmet Restaurant, Jakarta', 'Workshop', '2026-02-12T14:00:00+00:00', 'https://placehold.co/1366x768?text=event14'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Career Fair', 'Career fair for recent graduates.', 'Jakarta Convention Center', 'Education', '2026-03-10T10:00:00+00:00', 'https://placehold.co/1366x768?text=event15'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Music Concert', 'Live concert by a popular band.', 'ICE BSD, Tangerang', 'Entertainment', '2026-04-25T20:00:00+00:00', 'https://placehold.co/1366x768?text=event16'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Theater Play', 'Local theater group performing a classic play.', 'Gedung Kesenian Jakarta', 'Entertainment', '2026-05-18T19:30:00+00:00', 'https://placehold.co/1366x768?text=event17'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Workshop on Coding', 'Introductory workshop on programming.', 'Google Indonesia, Jakarta', 'Education', '2026-06-07T09:00:00+00:00', 'https://placehold.co/1366x768?text=event18'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), 'Environmental Seminar', 'Seminar on climate change and sustainability.', 'The Dharmawangsa Jakarta', 'Education', '2026-07-22T14:00:00+00:00', 'https://placehold.co/1366x768?text=event19'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Food Festival', 'A festival celebrating local cuisine.', 'Grand Indonesia Shopping Town, Jakarta', 'Entertainment', '2026-08-30T12:00:00+00:00', 'https://placehold.co/1366x768?text=event20'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Mindfulness Retreat', 'A weekend retreat focusing on mindfulness and meditation.', 'Fivelements, Bali', 'Health', '2026-09-18T08:00:00+00:00', 'https://placehold.co/1366x768?text=event21'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Charity Gala', 'A gala event to raise funds for charity.', 'Hotel Mulia Senayan, Jakarta', 'Networking', '2026-10-10T18:00:00+00:00', 'https://placehold.co/1366x768?text=event22'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Cultural Festival', 'A festival celebrating diverse cultures.', 'Taman Mini Indonesia Indah, Jakarta', 'Entertainment', '2026-11-05T10:00:00+00:00', 'https://placehold.co/1366x768?text=event23'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Public Speaking Workshop', 'Improve your public speaking skills.', 'Senayan City, Jakarta', 'Workshop', '2026-12-01T09:00:00+00:00', 'https://placehold.co/1366x768?text=event24'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Product Launch', 'Launch event for a new tech product.', ' Ritz-Carlton Mega Kuningan, Jakarta', 'Conference', '2026-12-15T15:00:00+00:00', 'https://placehold.co/1366x768?text=event25'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Art Fair', 'A fair showcasing local artists and their work.', 'ARTJOG, Yogyakarta', 'Art', '2027-01-20T10:00:00+00:00', 'https://placehold.co/1366x768?text=event26'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Writing Workshop', 'Workshop on creative writing techniques.', 'IVAA (Indonesian Visual Art Archive), Yogyakarta', 'Workshop', '2027-02-05T14:00:00+00:00', 'https://placehold.co/1366x768?text=event27'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Health Fair', 'A fair promoting health and wellness.', 'Mall Kelapa Gading, Jakarta', 'Health', '2027-03-10T08:00:00+00:00', 'https://placehold.co/1366x768?text=event28'),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), 'Innovation Summit', 'Summit on innovation and entrepreneurship.', 'Block71 Jakarta', 'Conference', '2027-04-25T09:00:00+00:00', 'https://placehold.co/1366x768?text=event29');
 INSERT INTO transaction (id, event_id, account_id, time) VALUES
 (uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 0), now() - interval '1 day'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 1), now() - interval '2 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 2), now() - interval '3 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 3), now() - interval '4 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 4), now() - interval '5 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 5), now() - interval '6 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 6), now() - interval '7 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 7), now() - interval '8 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 8), now() - interval '9 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 9), now() - interval '10 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 10), now() - interval '11 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 11), now() - interval '12 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 12), now() - interval '13 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 13), now() - interval '14 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 14), now() - interval '15 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 15), now() - interval '16 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 16), now() - interval '17 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 17), now() - interval '18 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 18), now() - interval '19 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 19), now() - interval '20 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 20), now() - interval '21 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 21), now() - interval '22 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 22), now() - interval '23 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 23), now() - interval '24 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 24), now() - interval '25 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 25), now() - interval '26 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 26), now() - interval '27 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 27), now() - interval '28 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 28), now() - interval '29 days'),
-(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 29), now() - interval '30 days');
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 1), now() - interval '2 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 2), now() - interval '3 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 3), now() - interval '4 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 4), now() - interval '5 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 5), now() - interval '6 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 6), now() - interval '7 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 7), now() - interval '8 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 8), now() - interval '9 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 9), now() - interval '10 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 10), now() - interval '11 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 11), now() - interval '12 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 12), now() - interval '13 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 13), now() - interval '14 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 14), now() - interval '15 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 15), now() - interval '16 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 16), now() - interval '17 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 17), now() - interval '18 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 18), now() - interval '19 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 19), now() - interval '20 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 20), now() - interval '21 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 21), now() - interval '22 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM account LIMIT 1 OFFSET 22), now() - interval '23 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM account LIMIT 1 OFFSET 23), now() - interval '24 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM account LIMIT 1 OFFSET 24), now() - interval '25 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM account LIMIT 1 OFFSET 25), now() - interval '26 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 26), now() - interval '27 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 27), now() - interval '28 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 28), now() - interval '29 day'),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 29), now() - interval '30 day');
 INSERT INTO feedback (id, transaction_id, account_id, rating, review) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 0), (SELECT id FROM account LIMIT 1 OFFSET 0), 5, 'Excellent service! Highly recommend.'),
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 1), (SELECT id FROM account LIMIT 1 OFFSET 1), 4, 'Very good, but room for improvement.'),
@@ -364,4 +363,27 @@ order by SIMILARITY(name::text, 'art') desc
 limit 1 
 offset 0;
 
-select * from event 
+select voucher.* 
+from event 
+inner join event_voucher on event_voucher.event_id = event.id
+inner join voucher on voucher.id = event_voucher.voucher_id
+where lower(event.name) like '%tech%';
+
+SELECT
+DATE_TRUNC('hour', t.time) as x,
+SUM(et.price) as y
+FROM transaction t 
+INNER JOIN event e ON e.id = t.event_id
+INNER JOIN event_ticket et ON et.event_id = e.id
+WHERE e.account_id = (SELECT id FROM account LIMIT 1 OFFSET 0)
+GROUP BY x
+ORDER BY x;
+
+SELECT
+DATE_TRUNC('week', t.time) as x,
+SUM((select count(*) from transaction t2 where t2.id = t.id)) as y
+FROM transaction t
+INNER JOIN event e ON e.id = t.event_id
+WHERE e.account_id = (SELECT id FROM account LIMIT 1 OFFSET 0)
+GROUP BY x
+ORDER BY x;

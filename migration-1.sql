@@ -297,17 +297,103 @@ INSERT INTO feedback (id, transaction_id, account_id, rating, review) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 28), (SELECT id FROM account LIMIT 1 OFFSET 8), 1, 'Very bad experience.'),
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 29), (SELECT id FROM account LIMIT 1 OFFSET 9), 4, 'Quite good, met expectations.');
 
-INSERT INTO account_voucher (id, account_id, voucher_id, quantity)
-SELECT uuid_generate_v4(), account.id, voucher.id, floor(random() * 101) 
-FROM account, voucher;
+INSERT INTO account_voucher (id, account_id, voucher_id, quantity) VALUES
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 0), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), (SELECT id FROM voucher LIMIT 1 OFFSET 1), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), (SELECT id FROM voucher LIMIT 1 OFFSET 2), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 3), (SELECT id FROM voucher LIMIT 1 OFFSET 3), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 4), (SELECT id FROM voucher LIMIT 1 OFFSET 4), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 5), (SELECT id FROM voucher LIMIT 1 OFFSET 5), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 6), (SELECT id FROM voucher LIMIT 1 OFFSET 6), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 7), (SELECT id FROM voucher LIMIT 1 OFFSET 7), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 8), (SELECT id FROM voucher LIMIT 1 OFFSET 8), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 9), (SELECT id FROM voucher LIMIT 1 OFFSET 9), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 10), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), (SELECT id FROM voucher LIMIT 1 OFFSET 11), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), (SELECT id FROM voucher LIMIT 1 OFFSET 12), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 3), (SELECT id FROM voucher LIMIT 1 OFFSET 13), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 4), (SELECT id FROM voucher LIMIT 1 OFFSET 14), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 5), (SELECT id FROM voucher LIMIT 1 OFFSET 15), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 6), (SELECT id FROM voucher LIMIT 1 OFFSET 16), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 7), (SELECT id FROM voucher LIMIT 1 OFFSET 17), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 8), (SELECT id FROM voucher LIMIT 1 OFFSET 18), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 9), (SELECT id FROM voucher LIMIT 1 OFFSET 19), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 20), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 1), (SELECT id FROM voucher LIMIT 1 OFFSET 21), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 2), (SELECT id FROM voucher LIMIT 1 OFFSET 22), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 3), (SELECT id FROM voucher LIMIT 1 OFFSET 23), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 4), (SELECT id FROM voucher LIMIT 1 OFFSET 24), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 5), (SELECT id FROM voucher LIMIT 1 OFFSET 25), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 6), (SELECT id FROM voucher LIMIT 1 OFFSET 26), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 7), (SELECT id FROM voucher LIMIT 1 OFFSET 27), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 8), (SELECT id FROM voucher LIMIT 1 OFFSET 28), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 9), (SELECT id FROM voucher LIMIT 1 OFFSET 29), floor(random() * 101));
 
-INSERT INTO event_voucher (id, voucher_id, event_id)
-SELECT uuid_generate_v4(), voucher.id, event.id 
-FROM event, voucher;
+INSERT INTO event_voucher (id, event_id, voucher_id) VALUES
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 0)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM voucher LIMIT 1 OFFSET 1)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM voucher LIMIT 1 OFFSET 2)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM voucher LIMIT 1 OFFSET 3)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM voucher LIMIT 1 OFFSET 4)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM voucher LIMIT 1 OFFSET 5)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM voucher LIMIT 1 OFFSET 6)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM voucher LIMIT 1 OFFSET 7)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM voucher LIMIT 1 OFFSET 8)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM voucher LIMIT 1 OFFSET 9)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 10)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM voucher LIMIT 1 OFFSET 11)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM voucher LIMIT 1 OFFSET 12)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM voucher LIMIT 1 OFFSET 13)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM voucher LIMIT 1 OFFSET 14)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM voucher LIMIT 1 OFFSET 15)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM voucher LIMIT 1 OFFSET 16)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM voucher LIMIT 1 OFFSET 17)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM voucher LIMIT 1 OFFSET 18)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM voucher LIMIT 1 OFFSET 19)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 20)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 1), (SELECT id FROM voucher LIMIT 1 OFFSET 21)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 2), (SELECT id FROM voucher LIMIT 1 OFFSET 22)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 3), (SELECT id FROM voucher LIMIT 1 OFFSET 23)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 4), (SELECT id FROM voucher LIMIT 1 OFFSET 24)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 5), (SELECT id FROM voucher LIMIT 1 OFFSET 25)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 6), (SELECT id FROM voucher LIMIT 1 OFFSET 26)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 7), (SELECT id FROM voucher LIMIT 1 OFFSET 27)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 8), (SELECT id FROM voucher LIMIT 1 OFFSET 28)),
+(uuid_generate_v4(), (SELECT id FROM event LIMIT 1 OFFSET 9), (SELECT id FROM voucher LIMIT 1 OFFSET 29));
 
-INSERT INTO transaction_voucher (id, transaction_id, voucher_id, quantity)
-SELECT uuid_generate_v4(), transaction.id, voucher.id, floor(random() * 101) 
-FROM transaction, voucher;
+
+INSERT INTO transaction_voucher (id, transaction_id, voucher_id, quantity) VALUES
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 0), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 1), (SELECT id FROM voucher LIMIT 1 OFFSET 1), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 2), (SELECT id FROM voucher LIMIT 1 OFFSET 2), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 3), (SELECT id FROM voucher LIMIT 1 OFFSET 3), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 4), (SELECT id FROM voucher LIMIT 1 OFFSET 4), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 5), (SELECT id FROM voucher LIMIT 1 OFFSET 5), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 6), (SELECT id FROM voucher LIMIT 1 OFFSET 6), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 7), (SELECT id FROM voucher LIMIT 1 OFFSET 7), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 8), (SELECT id FROM voucher LIMIT 1 OFFSET 8), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 9), (SELECT id FROM voucher LIMIT 1 OFFSET 9), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 11), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 1), (SELECT id FROM voucher LIMIT 1 OFFSET 12), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 2), (SELECT id FROM voucher LIMIT 1 OFFSET 13), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 3), (SELECT id FROM voucher LIMIT 1 OFFSET 14), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 4), (SELECT id FROM voucher LIMIT 1 OFFSET 15), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 5), (SELECT id FROM voucher LIMIT 1 OFFSET 16), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 6), (SELECT id FROM voucher LIMIT 1 OFFSET 17), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 7), (SELECT id FROM voucher LIMIT 1 OFFSET 18), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 8), (SELECT id FROM voucher LIMIT 1 OFFSET 19), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 9), (SELECT id FROM voucher LIMIT 1 OFFSET 20), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 21), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 1), (SELECT id FROM voucher LIMIT 1 OFFSET 22), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 2), (SELECT id FROM voucher LIMIT 1 OFFSET 23), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 3), (SELECT id FROM voucher LIMIT 1 OFFSET 24), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 4), (SELECT id FROM voucher LIMIT 1 OFFSET 25), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 5), (SELECT id FROM voucher LIMIT 1 OFFSET 26), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 6), (SELECT id FROM voucher LIMIT 1 OFFSET 27), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 7), (SELECT id FROM voucher LIMIT 1 OFFSET 28), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 8), (SELECT id FROM voucher LIMIT 1 OFFSET 29), floor(random() * 101)),
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 9), (SELECT id FROM voucher LIMIT 1 OFFSET 30), floor(random() * 101));
+
 
 INSERT INTO transaction_point (id, transaction_id, point_id, fixed_amount)
 SELECT uuid_generate_v4(), transaction.id, point.id, 10000 - point.fixed_amount 

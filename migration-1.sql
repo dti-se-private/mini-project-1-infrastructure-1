@@ -275,27 +275,7 @@ INSERT INTO feedback (id, transaction_id, account_id, rating, review) VALUES
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 6), (SELECT id FROM account LIMIT 1 OFFSET 6), 5, 'Fantastic experience! Will use again.'),
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 7), (SELECT id FROM account LIMIT 1 OFFSET 7), 3, 'Okay service, not great but not bad.'),
 (uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 8), (SELECT id FROM account LIMIT 1 OFFSET 8), 4, 'Good value for the money.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 9), 5, 'Excellent! Very pleased with the service.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 10), (SELECT id FROM account LIMIT 1 OFFSET 0), 2, 'Below average experience.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 11), (SELECT id FROM account LIMIT 1 OFFSET 1), 1, 'Terrible service, will not return.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 12), (SELECT id FROM account LIMIT 1 OFFSET 2), 4, 'Quite good, would recommend.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 13), (SELECT id FROM account LIMIT 1 OFFSET 3), 5, 'Excellent and prompt service!'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 14), (SELECT id FROM account LIMIT 1 OFFSET 4), 3, 'Average, could be better.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 15), (SELECT id FROM account LIMIT 1 OFFSET 5), 4, 'Good, but had a few issues.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 16), (SELECT id FROM account LIMIT 1 OFFSET 6), 5, 'Perfect! Couldn’t ask for more.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 17), (SELECT id FROM account LIMIT 1 OFFSET 7), 2, 'Not what I expected, disappointed.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 18), (SELECT id FROM account LIMIT 1 OFFSET 8), 1, 'Horrible experience overall.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 19), (SELECT id FROM account LIMIT 1 OFFSET 9), 4, 'Pretty good service.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 20), (SELECT id FROM account LIMIT 1 OFFSET 0), 5, 'Excellent service, highly recommend.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 21), (SELECT id FROM account LIMIT 1 OFFSET 1), 3, 'It was okay, not great.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 22), (SELECT id FROM account LIMIT 1 OFFSET 2), 4, 'Good experience overall.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 23), (SELECT id FROM account LIMIT 1 OFFSET 3), 5, 'Fantastic! Loved it.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 24), (SELECT id FROM account LIMIT 1 OFFSET 4), 3, 'Decent, could improve.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 25), (SELECT id FROM account LIMIT 1 OFFSET 5), 4, 'Satisfied with the service.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 26), (SELECT id FROM account LIMIT 1 OFFSET 6), 5, 'Absolutely wonderful!'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 27), (SELECT id FROM account LIMIT 1 OFFSET 7), 2, 'Not happy with the service.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 28), (SELECT id FROM account LIMIT 1 OFFSET 8), 1, 'Very bad experience.'),
-(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 29), (SELECT id FROM account LIMIT 1 OFFSET 9), 4, 'Quite good, met expectations.');
+(uuid_generate_v4(), (SELECT id FROM transaction LIMIT 1 OFFSET 9), (SELECT id FROM account LIMIT 1 OFFSET 9), 5, 'Excellent! Very pleased with the service.');
 
 INSERT INTO account_voucher (id, account_id, voucher_id, quantity) VALUES
 (uuid_generate_v4(), (SELECT id FROM account LIMIT 1 OFFSET 0), (SELECT id FROM voucher LIMIT 1 OFFSET 0), floor(random() * 101)),
